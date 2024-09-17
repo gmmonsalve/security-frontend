@@ -34,7 +34,15 @@ const Aes = ({ encrypt = false }) => {
             : 'http://localhost:9000/api/AES/decrypt';
 
         fetch(endpoint, requestOptions)
-            .then((response) => response.blob())  // Procesar como blob para descargar
+            .then((response) => {
+                if (!response.ok) {
+                    // Convertir la respuesta a JSON para obtener el mensaje de error
+                    return response.json().then((errorData) => {
+                        throw new Error(errorData.message || `Error ${encrypt ? 'encriptando' : 'desencriptando'} el archivo`);
+                    });
+                }
+                return response.blob();  // Si la respuesta es correcta (200), procesamos el blob
+            })
             .then((blob) => {
                 // Crear un objeto URL para el archivo descargable
                 const url = window.URL.createObjectURL(new Blob([blob]));
@@ -45,7 +53,11 @@ const Aes = ({ encrypt = false }) => {
                 link.click();
                 link.remove();
             })
-            .catch((error) => alert.error(`Error ${encrypt ? 'encriptando' : 'desencriptando'} el archivo`));
+            .catch((error) => {
+                // Mostrar el mensaje de error en un alert
+                alert(`Error: ${error.message}`);
+            });
+
         // console.log('Formulario enviado:', { key, file });
     };
 
