@@ -1,5 +1,9 @@
+import style from './footer.module.css'
+
 function Footer(){
-    return <>Esto es un footer</>
+    return <footer className='bg-dark'>
+        Hecho con ♥ por ABCGMZ
+    </footer>
 }
 
 export default Footer;
