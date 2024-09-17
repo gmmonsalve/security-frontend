@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import style from './aes.module.css';
 
-const Aes = () => {
+const Aes = ({ encrypt = false }) => {
     const { container, group, btn } = style;
 
     const [key, setKey] = useState('');
@@ -29,25 +29,29 @@ const Aes = () => {
             redirect: 'follow'
         };
 
-        fetch('http://localhost:9000/api/AES/encrypt', requestOptions)
-            .then((response) => response.blob()) // Convertir la respuesta en un blob
+        const endpoint = encrypt
+            ? 'http://localhost:9000/api/AES/encrypt'
+            : 'http://localhost:9000/api/AES/decrypt';
+
+        fetch(endpoint, requestOptions)
+            .then((response) => response.blob())  // Procesar como blob para descargar
             .then((blob) => {
                 // Crear un objeto URL para el archivo descargable
                 const url = window.URL.createObjectURL(new Blob([blob]));
                 const link = document.createElement('a');
                 link.href = url;
-                link.setAttribute('download', 'encrypted_file.txt'); // Nombre del archivo descargado
+                link.setAttribute('download', encrypt ? 'encrypted_file.txt' : 'decrypted_file.txt');
                 document.body.appendChild(link);
                 link.click();
                 link.remove();
             })
-            .catch((error) => console.error('Error:', error));
+            .catch((error) => alert.error(`Error ${encrypt ? 'encriptando' : 'desencriptando'} el archivo`));
         // console.log('Formulario enviado:', { key, file });
     };
 
     return (
         <div className={container}>
-            <h2>Formulario de cifrado</h2>
+            <h2>{encrypt ? 'Formulario de cifrado' : 'Formulario de descifrado'}</h2>
             <form onSubmit={handleSubmit}>
                 <div className={group}>
                     <label htmlFor="key">Digite la llave: </label>
@@ -60,12 +64,14 @@ const Aes = () => {
                     />
                 </div>
                 <div className={group}>
-                    <label htmlFor="file">Digite el archivo a cifrar:</label>
+                    <label htmlFor="file">{encrypt ? 'Digite el archivo a cifrar:' : 'Digite el archivo a descifrar:'}</label>
                     <input type="file"
                         id="file"
                         onChange={handleFileChange} />
                 </div>
-                <button type="submit" className={btn}>Enviar</button>
+                <button type="submit" className={btn}>
+                    {encrypt ? 'Cifrar' : 'Descifrar'}
+                </button>
             </form>
         </div>
     );

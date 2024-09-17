@@ -13,7 +13,7 @@ import Login from './pages/auth/Login'
 import Register from './pages/auth/Register'
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Aes from './components/Aes';
+import EncryptDecrypt from './pages/EncryptDecrypt';
 
 
 function App() {
@@ -41,9 +41,7 @@ function App() {
         },
         {
           path: "cypher-aes",
-          element: (<><h1>cifrar y descifrar</h1>
-          <Aes/>
-          </>)
+          element: (<EncryptDecrypt/>)
         }
       ]
     },
