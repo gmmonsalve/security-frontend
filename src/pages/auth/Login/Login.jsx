@@ -1,10 +1,15 @@
-import LoginForm from "../../../components/Auth/LoginForm/LoginForm";
+import LoginForm from '../../../components/auth/LoginForm/LoginForm';
+import Card from 'react-bootstrap/Card';
 
 const Login = ()=>{
     return <>
         <section>
             <article>
-                <LoginForm></LoginForm>
+                <Card className='container-sm'>
+                    <Card.Body>
+                        <LoginForm></LoginForm>
+                    </Card.Body>
+                </Card>
             </article>
         </section>
     </>
