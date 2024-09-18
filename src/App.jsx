@@ -1,19 +1,15 @@
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { createRoot } from "react-dom/client";
-
-import {
-  createBrowserRouter,
-  RouterProvider,
-  Route,
-  Outlet,
-  Link,
-} from "react-router-dom";
+import 'react-toastify/dist/ReactToastify.css'
+import {createBrowserRouter, RouterProvider, Outlet} from "react-router-dom";
+import { ToastContainer, Bounce } from 'react-toastify'
 import Login from './pages/auth/Login'
 import Register from './pages/auth/Register'
 import Header from './components/Header';
 import Footer from './components/Footer';
 import EncryptDecrypt from './pages/EncryptDecrypt';
+
+
 
 
 function App() {
@@ -57,6 +53,18 @@ function App() {
 
   return (
     <main>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+        transition={Bounce} />
         <RouterProvider router={router} />
     </main>
   )
