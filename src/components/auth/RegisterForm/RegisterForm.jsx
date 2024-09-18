@@ -12,7 +12,7 @@ function RegisterForm(){
             password: form.password.value
         }
 
-        console.log(registerInfo)
+        /* console.log(registerInfo) */
     } //TODO: Add styles and handle API connection.
 
     return <>
