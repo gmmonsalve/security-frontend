@@ -2,4 +2,8 @@ const environment = {
     apiUrl: ''
 }
 
-export default environment;
+const routes  ={
+    login: ''
+}
+
+export default {environment, routes};
