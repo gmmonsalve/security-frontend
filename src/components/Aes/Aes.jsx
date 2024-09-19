@@ -19,19 +19,23 @@ const Aes = ({ encrypt = false }) => {
             return;
         }
 
+        // Crear los headers
+        const headerData = new Headers();
+        headerData.append("Authorization", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY2ZWEyZjhkYzkyMWJjMTY1MmViMjZjYiIsIm5hbWUiOiJSdWJlbiIsImxhc3RuYW1lIjoiQ2FtZXJvIiwibmlja25hbWUiOiJydWJlbiIsIl9fdiI6MH0sImlhdCI6MTcyNjcxMjcxNSwiZXhwIjoxNzI2NzE2MzE1fQ.JncsHoye89eDbBNwaDuM_45xHYAOwF28XMesAfHPYR4");
+
         const formData = new FormData();
         formData.append('key', key);
         formData.append('file', file);
 
         const requestOptions = {
             method: 'POST',
+            headers: headerData,
             body: formData,
             redirect: 'follow'
         };
 
-        const endpoint = encrypt
-            ? 'http://localhost:9000/api/AES/encrypt'
-            : 'http://localhost:9000/api/AES/decrypt';
+        const url = 'http://localhost:9000/api/AES/'
+        const endpoint = encrypt ? url + 'encrypt' : url + 'decrypt';
 
         fetch(endpoint, requestOptions)
             .then((response) => {
