@@ -3,6 +3,7 @@ import { toast } from 'react-toastify';
 import { useNavigate } from "react-router-dom";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import storeSession from "../../../services/storeSession";
 
 function RegisterForm(){
 
@@ -51,7 +52,7 @@ function RegisterForm(){
       
             toast.success('Usuario registrado con exito')
       
-            localStorage.setItem('user', response.data)//TODO: Review a safer option
+            storeSession.setCookie('auth',`${response}`, {secure: true, expires: null,sameSite: 'Strict', path: '/'})
       
             navigate('/')
       
