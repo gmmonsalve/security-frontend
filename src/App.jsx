@@ -8,7 +8,8 @@ import Register from './pages/auth/Register'
 import Header from './components/Header';
 import Footer from './components/Footer';
 import EncryptDecrypt from './pages/EncryptDecrypt';
-
+import ProtectedRoute from './services/ProtectedRoute';
+import RedirectRoute from './services/RedirectRoute';
 
 
 
@@ -22,7 +23,7 @@ function App() {
       element: (
         <>
         <Header></Header>
-          <Outlet />
+        <ProtectedRoute component={<Outlet />}/>
         <Footer></Footer>
         </>
       ),
@@ -43,11 +44,11 @@ function App() {
     },
     {
       path: "login",
-      element: <Login></Login>,
+      element: <RedirectRoute component={<Login/>}/>,
     },
     {
       path: "register",
-      element: <Register></Register>
+      element: <RedirectRoute component={<Register/>}/>
     }
   ]);
 
