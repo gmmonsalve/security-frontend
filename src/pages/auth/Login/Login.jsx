@@ -2,7 +2,7 @@ import LoginForm from '../../../components/auth/LoginForm/LoginForm';
 import Card from 'react-bootstrap/Card';
 
 const Login = ()=>{
-    return <>
+    return (
         <section>
             <article>
                 <Card className='container-sm'>
@@ -12,7 +12,9 @@ const Login = ()=>{
                 </Card>
             </article>
         </section>
-    </>
+    )
+        
+   
 }
 
 export default Login;
