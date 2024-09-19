@@ -3,6 +3,8 @@ import { toast } from 'react-toastify'
 import { useNavigate } from "react-router-dom" 
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import storeSession from "../../../services/storeSession";
+import Alert from 'react-bootstrap/Alert';
 
 function LoginForm(){
 
@@ -45,7 +47,7 @@ function LoginForm(){
       
             toast.success('Usuario logueado con exito')
       
-            localStorage.setItem('user', response.data)//TODO: Review a safer option
+            storeSession.setCookie('auth',`${response}`, {secure: true, expires: null,sameSite: 'Strict', path: '/'})
       
             navigate('/')
       
@@ -68,6 +70,9 @@ function LoginForm(){
                 </Form.Group>
                 <Button type="submit" variant="primary">Login</Button>{' '}
             </Form>
+            <Alert key={'dark'} variant={'dark'}>
+                  ¿No tienes una cuenta? <Alert.Link href="/register">Regístrate</Alert.Link>
+            </Alert>
     </>
 }
 
