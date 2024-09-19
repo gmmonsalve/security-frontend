@@ -6,4 +6,7 @@ const routes  ={
     login: ''
 }
 
-export default {environment, routes};
+export { 
+    environment,
+    routes
+};
