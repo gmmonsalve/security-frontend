@@ -8,7 +8,7 @@ import Register from './pages/auth/Register'
 import Header from './components/Header';
 import Footer from './components/Footer';
 import EncryptDecrypt from './pages/EncryptDecrypt';
-
+import ListUsers from './components/auth/ListUsers';
 
 
 
@@ -48,6 +48,10 @@ function App() {
     {
       path: "register",
       element: <Register></Register>
+    },
+    {
+      path: "list-users",
+      element: <ListUsers></ListUsers>
     }
   ]);
 

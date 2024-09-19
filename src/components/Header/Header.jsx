@@ -13,6 +13,7 @@ function Header(){
                 <Nav.Link href='home'>Home</Nav.Link>
                 <Nav.Link href='cypher-aes'>Cifrado/Descifrado</Nav.Link>
                 <Nav.Link href='download-table'>Descargar Tabla</Nav.Link>
+                <Nav.Link href='list-users'>Lista de usuarios</Nav.Link>
             </Nav>
             </Navbar.Collapse>
         </Container>
