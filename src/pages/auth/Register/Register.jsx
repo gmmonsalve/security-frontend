@@ -3,7 +3,7 @@ import Card from 'react-bootstrap/Card';
 
 
 function Register(){
-    return <>
+    return (
         <section>
             <article>
             <Card className='container-sm'>
@@ -13,7 +13,8 @@ function Register(){
                 </Card>
             </article>
         </section>
-    </>
+    )
+        
 }
 
 export default Register;
