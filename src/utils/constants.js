@@ -3,7 +3,8 @@ const environment = {
 }
 
 const routes  ={
-    login: ''
+    login: '',
+    register: ''
 }
 
 export { 
