@@ -47,7 +47,7 @@ function LoginForm(){
       
             toast.success('Usuario logueado con exito')
       
-            storeSession.setCookie('auth',`${response}`, {secure: true, expires: null,sameSite: 'Strict', path: '/'})
+            storeSession.setCookie('auth',`${response.data}`, {secure: true, expires: null,sameSite: 'Strict', path: '/'})
       
             navigate('/')
       

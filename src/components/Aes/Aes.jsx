@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import { environment, routes } from "../../utils/constants.js"
 import style from './aes.module.css';
+import storeSession from '../../services/storeSession';
 
 const Aes = ({ encrypt = false }) => {
     const { container, group, btn } = style;
@@ -21,7 +23,7 @@ const Aes = ({ encrypt = false }) => {
 
         // Crear los headers
         const headerData = new Headers();
-        headerData.append("Authorization", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY2ZWEyZjhkYzkyMWJjMTY1MmViMjZjYiIsIm5hbWUiOiJSdWJlbiIsImxhc3RuYW1lIjoiQ2FtZXJvIiwibmlja25hbWUiOiJydWJlbiIsIl9fdiI6MH0sImlhdCI6MTcyNjcxMjcxNSwiZXhwIjoxNzI2NzE2MzE1fQ.JncsHoye89eDbBNwaDuM_45xHYAOwF28XMesAfHPYR4");
+        headerData.append("Authorization", storeSession.getCookie('auth'));
 
         const formData = new FormData();
         formData.append('key', key);
@@ -34,7 +36,7 @@ const Aes = ({ encrypt = false }) => {
             redirect: 'follow'
         };
 
-        const url = 'http://localhost:9000/api/AES/'
+        const url = `${environment.apiUrl}${routes.aes}`
         const endpoint = encrypt ? url + 'encrypt' : url + 'decrypt';
 
         fetch(endpoint, requestOptions)
