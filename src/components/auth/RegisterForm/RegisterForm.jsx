@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 import { useNavigate } from "react-router-dom";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import storeSession from "../../../services/storeSession";
+// import storeSession from "../../../services/storeSession";
 import { user_regex } from "../../../services/validations/auth.validation";
 
 function RegisterForm() {
@@ -58,9 +58,9 @@ function RegisterForm() {
 
             toast.success('Usuario registrado con exito')
 
-            storeSession.setCookie('auth', `${response}`, { secure: true, expires: null, sameSite: 'Strict', path: '/' })
+            // storeSession.setCookie('auth', `${response.data}`, { secure: true, expires: null, sameSite: 'Strict', path: '/' })
 
-            navigate('/')
+            navigate('/login')
 
         } catch (error) {
             toast.error('Error en la peticion al servidor')

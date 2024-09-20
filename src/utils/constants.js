@@ -4,7 +4,7 @@ const environment = {
 
 const routes  ={
     login: '/auth/login',
-    register: '',
+    register: '/auth/register',
     aes: '/AES/',
     userList: '/download'
 }
