@@ -1,4 +1,13 @@
 import storeSession from "./storeSession";
+
+function isAuth() {
+   return !!storeSession.getCookie('auth')
+}
+
+export default isAuth;
+
+/*
+import storeSession from "./storeSession";
 import jwt_decode from "jwt-decode";
 
 function isAuth() {
@@ -21,3 +30,4 @@ function isAuth() {
 }
 
 export default isAuth;
+*/
