@@ -5,6 +5,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 // import storeSession from "../../../services/storeSession";
 import { user_regex } from "../../../services/validations/auth.validation";
+import style from './RegisterForm.module.css';
 
 function RegisterForm() {
 
@@ -69,31 +70,36 @@ function RegisterForm() {
 
     } //TODO: Add styles and handle API connection.
 
-    return <>
-        <Form onSubmit={handleOnSubmit}>
-            <Form.Group controlId="name">
-                <Form.Label>Nombre</Form.Label>
-                <Form.Control type="text" placeholder="Nombre" required></Form.Control>
-            </Form.Group>
-            <Form.Group controlId="lastname">
-                <Form.Label>Nombre</Form.Label>
-                <Form.Control type="text" placeholder="Apellido" required></Form.Control>
-            </Form.Group>
-            <Form.Group controlId="username">
-                <Form.Label>Nombre de usuario</Form.Label>
-                <Form.Control type="text" placeholder="Username" required></Form.Control>
-            </Form.Group>
-            <Form.Group controlId="password">
-                <Form.Label>Contraseña</Form.Label>
-                <Form.Control type="password" placeholder="Contraseña" required></Form.Control>
-            </Form.Group>
-            <Form.Group controlId="confirmpass">
-                <Form.Label>Confirmar contraseña</Form.Label>
-                <Form.Control type="password" placeholder="Confirmar contraseña" required></Form.Control>
-            </Form.Group>
-            <Button type="submit" variant="primary">Registrar</Button>
-        </Form>
-    </>
+    return (
+        <div className={style.container}>
+          <div className={style['form-container']}>
+            <h2>Registro</h2>
+            <Form onSubmit={handleOnSubmit}>
+              <Form.Group controlId="name">
+                <Form.Label className={style['form-label']}>Nombre</Form.Label>
+                <Form.Control className={style['form-control']} type="text" placeholder="Nombre" required />
+              </Form.Group>
+              <Form.Group controlId="lastname">
+                <Form.Label className={style['form-label']}>Apellido</Form.Label>
+                <Form.Control className={style['form-control']} type="text" placeholder="Apellido" required />
+              </Form.Group>
+              <Form.Group controlId="username">
+                <Form.Label className={style['form-label']}>Nombre de usuario</Form.Label>
+                <Form.Control className={style['form-control']} type="text" placeholder="Username" required />
+              </Form.Group>
+              <Form.Group controlId="password">
+                <Form.Label className={style['form-label']}>Contraseña</Form.Label>
+                <Form.Control className={style['form-control']} type="password" placeholder="Contraseña" required />
+              </Form.Group>
+              <Form.Group controlId="confirmpass">
+                <Form.Label className={style['form-label']}>Confirmar contraseña</Form.Label>
+                <Form.Control className={style['form-control']} type="password" placeholder="Confirmar contraseña" required />
+              </Form.Group>
+              <Button type="submit" variant="primary" className={style['form-control']}>Registrar</Button>
+            </Form>
+          </div>
+        </div>
+      )
 }
 
 export default RegisterForm;
