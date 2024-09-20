@@ -2,8 +2,7 @@ import Joi from "joi"
 
 const user_regex = Joi.object({
   name: Joi.string().min(4).max(16).required(),
-  lastanme: Joi.string().min(4).max(16).required(),
-  nickname: Joi.string().min(4).max(16).required(),
+  lastname: Joi.string().min(4).max(16).required(),
   nickname: Joi.string().min(4).max(16).required(),
   password: Joi.string()
     .min(8)

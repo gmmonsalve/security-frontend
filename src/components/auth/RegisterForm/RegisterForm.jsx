@@ -15,19 +15,24 @@ function RegisterForm() {
         event.preventDefault()
         const form = event.target
         const resetForm = (form) => {
+            form.name.value = ""
+            form.lastname.value = ""
             form.username.value = ""
             form.password.value = ""
-            form.email.value = ""
-            form.password.value = ""
             form.confirmpass.value = ""
-            
         }
 
         const registerInfo = {
             name: form.name.value,
-            username: form.username.value,
-            email: form.email.value,
-            password: form.password.value
+            lastname: form.lastname.value,
+            nickname: form.username.value,
+            password: form.password.value,
+            confirm_password: form.confirmpass.value
+        }
+
+        const { error } = user_regex.validate(registerInfo)
+        if (error) {
+            return toast.error('Error en los datos ingresados')
         }
 
         try {
@@ -70,13 +75,13 @@ function RegisterForm() {
                 <Form.Label>Nombre</Form.Label>
                 <Form.Control type="text" placeholder="Nombre" required></Form.Control>
             </Form.Group>
+            <Form.Group controlId="lastname">
+                <Form.Label>Nombre</Form.Label>
+                <Form.Control type="text" placeholder="Apellido" required></Form.Control>
+            </Form.Group>
             <Form.Group controlId="username">
                 <Form.Label>Nombre de Usuario</Form.Label>
                 <Form.Control type="text" placeholder="Username" required></Form.Control>
-            </Form.Group>
-            <Form.Group controlId="email">
-                <Form.Label>Email</Form.Label>
-                <Form.Control type="email" placeholder="Email" required></Form.Control>
             </Form.Group>
             <Form.Group controlId="password">
                 <Form.Label>Contraseña</Form.Label>
