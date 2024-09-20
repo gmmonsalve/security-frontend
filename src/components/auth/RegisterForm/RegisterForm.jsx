@@ -32,7 +32,7 @@ function RegisterForm() {
 
         const { error } = user_regex.validate(registerInfo)
         if (error) {
-            return toast.error('Error en los datos ingresados')
+            return toast.error(error.details[0].message)
         }
 
         try {
@@ -80,7 +80,7 @@ function RegisterForm() {
                 <Form.Control type="text" placeholder="Apellido" required></Form.Control>
             </Form.Group>
             <Form.Group controlId="username">
-                <Form.Label>Nombre de Usuario</Form.Label>
+                <Form.Label>Nombre de usuario</Form.Label>
                 <Form.Control type="text" placeholder="Username" required></Form.Control>
             </Form.Group>
             <Form.Group controlId="password">

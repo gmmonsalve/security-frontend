@@ -27,7 +27,7 @@ function LoginForm() {
 
     const { error } = login_regex.validate(loginInfo)
     if (error) {
-      return toast.error('Error en los datos ingresados')
+      return toast.error(error.details[0].message)
     }
 
     try {
