@@ -10,6 +10,7 @@ import Footer from './components/Footer';
 import EncryptDecrypt from './pages/EncryptDecrypt';
 import ProtectedRoute from './services/ProtectedRoute';
 import RedirectRoute from './services/RedirectRoute';
+import Users from './components/Users/Users';
 
 
 
@@ -34,7 +35,7 @@ function App() {
         },
         {
           path: "download-table",
-          element:(<h1>download table here</h1>)
+          element:(<Users/>)
         },
         {
           path: "cypher-aes",

@@ -1,10 +1,12 @@
 const environment = {
-    apiUrl: ''
+    apiUrl: 'http://localhost:9000/api'
 }
 
 const routes  ={
-    login: '',
-    register: ''
+    login: '/auth/login',
+    register: '/auth/register',
+    aes: '/AES/',
+    userList: '/download'
 }
 
 export { 
