@@ -1,0 +1,80 @@
+:root {
+    --btn-bg: #45a049; /* Color de fondo del botón */
+    --btn-bg-hover: #2e6b31; /* Color de fondo al pasar el mouse */
+    --btn-bg-active: transparent; /* Color de fondo al hacer clic */
+}
+.card {
+    border: none !important; /* Elimina el borde */
+    box-shadow: none !important; /* Elimina la sombra, si es necesario */
+}
+
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.formWrapper {
+    background-color: #f4f6f9; /* Fondo claro */
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    margin-bottom: 6rem; 
+    
+}
+
+/* Alinear etiquetas a la izquierda */
+.form-label {
+    text-align: left; /* Alinear etiquetas a la izquierda */
+}
+
+/* Estilos para los botones */
+.RegisterButton {
+    width: 100%;
+    background-color: var(--btn-bg);
+    color: white;
+    padding: 0.8rem;
+    font-size: 1.1rem;
+    border-radius: 4px;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    margin-top: 1rem; /* Agrega este margen */
+}
+
+
+.RegisterButton:hover {
+    background-color: var(--btn-bg-hover);
+}
+
+.RegisterButton:focus,
+.RegisterButton:active {
+    background-color: var(--btn-bg); /* Color original al hacer clic */
+    outline: none;
+    box-shadow: none;
+}
+
+/* Estilo de la alerta */
+.alertWrapper {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+/* Ajustes de formulario en pantallas pequeñas */
+@media (max-width: 768px) {
+    .formWrapper {
+        padding: 1.5rem;
+    }
+}
