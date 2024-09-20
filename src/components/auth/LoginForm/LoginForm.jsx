@@ -6,6 +6,7 @@ import Form from 'react-bootstrap/Form';
 import storeSession from "../../../services/storeSession";
 import Alert from 'react-bootstrap/Alert';
 import { login_regex } from "../../../services/validations/auth.validation";
+import style from './LoginForm.module.css';
 
 function LoginForm() {
 
@@ -55,7 +56,7 @@ function LoginForm() {
 
       storeSession.setCookie('auth', `${response.data}`, { secure: true, expires: null, sameSite: 'Strict', path: '/' })
 
-      navigate('/')
+      navigate('/home')
 
     } catch (error) {
       toast.error('Error en la peticion al servidor')
@@ -64,22 +65,27 @@ function LoginForm() {
 
   }
   //TODO: Add styles and handle API connection.
-  return <>
-    <Form onSubmit={handleOnSubmit}>
-      <Form.Group className="mb-3" controlId="username">
-        <Form.Label>Nombre de usuario</Form.Label>
-        <Form.Control type="text" placeholder="username" required />
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="password">
-        <Form.Label>Contraseña</Form.Label>
-        <Form.Control type="password" placeholder="password" required />
-      </Form.Group>
-      <Button type="submit" variant="primary">Login</Button>{' '}
-    </Form>
-    <Alert key={'dark'} variant={'dark'}>
-      ¿No tienes una cuenta? <Alert.Link href="/register">Regístrate</Alert.Link>
-    </Alert>
-  </>
+  return (
+    <div className={style.container}>
+      <div className={style['form-container']}>
+        <h2>Login</h2>
+        <Form onSubmit={handleOnSubmit}>
+          <Form.Group className="mb-3" controlId="username">
+            <Form.Label className={style['form-label']}>Nombre de usuario</Form.Label>
+            <Form.Control className={style['form-control']} type="text" placeholder="username" required />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="password">
+            <Form.Label className={style['form-label']}>Contraseña</Form.Label>
+            <Form.Control className={style['form-control']} type="password" placeholder="password" required />
+          </Form.Group>
+          <Button type="submit" variant="primary" className={style['form-control']}>Login</Button>
+        </Form>
+        <Alert className={style.alert} key={'dark'} variant={'dark'}>
+          ¿No tienes una cuenta? <Alert.Link href="/register" className={style['alert-link']}>Regístrate</Alert.Link>
+        </Alert>
+      </div>
+    </div>
+  )
 }
 
 export default LoginForm;

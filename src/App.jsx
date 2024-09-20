@@ -11,6 +11,7 @@ import EncryptDecrypt from './pages/EncryptDecrypt';
 import ProtectedRoute from './services/ProtectedRoute';
 import RedirectRoute from './services/RedirectRoute';
 import Users from './components/Users/Users';
+import Team from './components/Team';
 
 
 
@@ -31,7 +32,7 @@ function App() {
       children:[
         {
           path: "home",
-          element: (<h1>Contenido</h1>)
+          element: (<Team/>)
         },
         {
           path: "download-table",
