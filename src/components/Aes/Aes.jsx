@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import style from './aes.module.css';
+import { environment, routes } from "../../utils/constants.js"
+import storeSession from '../../services/storeSession';
 
 const Aes = ({ encrypt = false }) => {
     const { container, group, btn } = style;
@@ -19,19 +21,23 @@ const Aes = ({ encrypt = false }) => {
             return;
         }
 
+        // Crear los headers
+        const headerData = new Headers();
+        headerData.append("Authorization", storeSession.getCookie('auth'));
+
         const formData = new FormData();
         formData.append('key', key);
         formData.append('file', file);
 
         const requestOptions = {
             method: 'POST',
+            headers: headerData,
             body: formData,
             redirect: 'follow'
         };
 
-        const endpoint = encrypt
-            ? 'http://localhost:9000/api/AES/encrypt'
-            : 'http://localhost:9000/api/AES/decrypt';
+        const url = `${environment.apiUrl}${routes.aes}`
+        const endpoint = encrypt ? url + 'encrypt' : url + 'decrypt';
 
         fetch(endpoint, requestOptions)
             .then((response) => {
